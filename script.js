@@ -10,32 +10,35 @@ var generateBtn = document.querySelector("#generate");
 
   //prompt password selectin options for the user
 
-function generatePassword() {
-  var characterSelect = prompt("How many characters do you want your password to have (please select a number between 8 and 128)?")
-  if (isNaN(characterSelect)) {
-    alert("That is not a number.")
-  }
-  if (characterSelect >= 8 && characterSelect < 129) {
+  function generatePassword() {
+    var characterSelect = prompt("How many characters do you want your password to have (please select a number between 8 and 128)?")
+    if (isNaN(characterSelect)) {
+      alert("You did not enter a valid number, please try again.")
+      return "Click on the red button to try again."
+    } 
+  // character selection is either too small or too large
+
+    if (characterSelect < 8 || characterSelect > 128) {
+      alert("You did not provide a valid length, please try again!")
+      return "Click on the red button to try again."
+   }
+
+  //charact selection is in the acceptable range, progress
+
     var lowercase = confirm("Do you want to include lowercase characters?");
     var uppercase = confirm("Do you want to include uppercase characters?");
     var numeric = confirm("Do you want to include numeric?");
     var special = confirm("Do you want to include special characters?");
-  } else {
-      alert("You did not provide a valid length, please try again!")
-      return "Click on the red button to try again."
-}
 
-
+    if (!lowercase && !uppercase && !numeric && !special) {
+      alert("You are required to make at least one selection")
+      lowercase = confirm("Do you want to include lowercase characters?");
+      uppercase = confirm("Do you want to include uppercase characters?");
+      numeric = confirm("Do you want to include numeric?");
+      special = confirm("Do you want to include special characters?");
+    }
   //if not selection is made, alert the user that at least one selection is required then prompt each question again.
-
-  if (!lowercase && !uppercase && !numeric && !special) {
-    alert("You are required to make at least one selection")
-    lowercase = confirm("Do you want to include lowercase characters?");
-    uppercase = confirm("Do you want to include uppercase characters?");
-    numeric = confirm("Do you want to include numeric?");
-    special = confirm("Do you want to include special characters?");
-  }
-
+  
   return "Randomly generated password: "
 }
 
