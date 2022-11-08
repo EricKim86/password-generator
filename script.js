@@ -23,12 +23,33 @@ var generateBtn = document.querySelector("#generate");
       return "Click on the red button to try again."
    }
 
-  //charact selection is in the acceptable range, progress
+  //character selection is in the acceptable range, progress
 
     var lowercase = confirm("Do you want to include lowercase characters?");
     var uppercase = confirm("Do you want to include uppercase characters?");
     var numeric = confirm("Do you want to include numeric?");
     var special = confirm("Do you want to include special characters?");
+
+  //user choices will be entered here (storage container)
+
+    var recordKeeper = []
+
+    if (lowercase === true) {
+      recordKeeper.push(lowercase)
+    }
+
+    if (uppercase === true) {
+      recordKeeper.push(uppercase)
+    }
+
+    if (numeric === true) {
+      recordKeeper.push(numeric)
+    }
+
+    if (special === true) {
+      recordKeeper.push(special)
+    }
+
 
     if (!lowercase && !uppercase && !numeric && !special) {
       alert("You are required to make at least one selection")
