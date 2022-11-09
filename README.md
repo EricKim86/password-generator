@@ -6,10 +6,11 @@ This project is a demonstration of numerous foundatinal JavaScript topics includ
 
 ## Installation
 
-This application can be accessed by opening the index.html file that is located in the respository on a web browser or clicking on: https://erickim86.github.io/erickim-portfolio/
+This application can be accessed by opening the index.html file that is located in the respository on a web browser or clicking on: https://erickim86.github.io/password-generator/
 
 ## Usage
-https://github.com/EricKim86/password-generator/blob/main/main-page.png
+![Example image of the main Horiseon site](https://github.com/EricKim86/password-generator/blob/main/assets/images/main-page.png?raw=true)
+
 ## How to Contribute
 
 If you would like to contribute to this or future projects, please contact me at erickimek86@gmail.com.
