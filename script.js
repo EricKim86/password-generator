@@ -1,15 +1,6 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
 
-  //defining characters with arrays
- 
-  var lowercase = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
-  var uppercase = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
-  var numeric = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
-  var special = ["!", "@", "#", "$", "%", "^", "&", "*", "?"]
-
-  //prompt password selectin options for the user
-
   function generatePassword() {
     var characterSelect = prompt("How many characters do you want your password to have (please select a number between 8 and 128)?")
     if (isNaN(characterSelect)) {
@@ -25,42 +16,60 @@ var generateBtn = document.querySelector("#generate");
 
   //character selection is in the acceptable range, progress
 
-    var lowercase = confirm("Do you want to include lowercase characters?");
-    var uppercase = confirm("Do you want to include uppercase characters?");
-    var numeric = confirm("Do you want to include numeric?");
-    var special = confirm("Do you want to include special characters?");
+    var selectLowercase = confirm("Do you want to include lowercase characters?")
+    var selectUppercase = confirm("Do you want to include uppercase characters?")
+    var selectNumeric = confirm("Do you want to include numeric?")
+    var selectSpecial = confirm("Do you want to include special characters?")
+
+  //defining characters with arrays
+ 
+    var lowercase = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
+    var uppercase = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
+    var numeric = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
+    var special = ["!", "@", "#", "$", "%", "^", "&", "*", "?"]
 
   //user choices will be entered here (storage container)
 
     var recordKeeper = []
 
-    if (lowercase === true) {
+    if (selectLowercase === true) {
       recordKeeper.push(lowercase)
     }
 
-    if (uppercase === true) {
+    if (selectUppercase === true) {
       recordKeeper.push(uppercase)
     }
 
-    if (numeric === true) {
+    if (selectNumeric === true) {
       recordKeeper.push(numeric)
     }
 
-    if (special === true) {
+    if (selectSpecial === true) {
       recordKeeper.push(special)
     }
 
+    if (recordKeeper.length === 0) {
+      recordKeeper.push(numeric)
+    }
 
-    if (!lowercase && !uppercase && !numeric && !special) {
+    var createdCode = ""
+
+    for (var i = 0; i < characterSelect; i++) {
+      var randomAnswer = recordKeeper[Math.floor(Math.random()*recordKeeper.length)]
+      createdCode += randomAnswer
+    }
+
+  //if not selection is made, alert the user that at least one selection is required then prompt each question again.
+    
+  if (!lowercase && !uppercase && !numeric && !special) {
       alert("You are required to make at least one selection")
       lowercase = confirm("Do you want to include lowercase characters?");
       uppercase = confirm("Do you want to include uppercase characters?");
       numeric = confirm("Do you want to include numeric?");
       special = confirm("Do you want to include special characters?");
     }
-  //if not selection is made, alert the user that at least one selection is required then prompt each question again.
-  
-  return "Randomly generated password: "
+
+  return createdCode
 }
 
 // Write password to the #password input
