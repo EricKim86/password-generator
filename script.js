@@ -3,12 +3,12 @@ var generateBtn = document.querySelector("#generate");
 
   function generatePassword() {
 
-  //defining characters with arrays
+//defining characters with arrays
  
-  var lowercase = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
-  var uppercase = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
-  var numeric = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
-  var special = ["!", "@", "#", "$", "%", "^", "&", "*", "?"];
+    var lowercase = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+    var uppercase = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
+    var numeric = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
+    var special = ["!", "@", "#", "$", "%", "^", "&", "*", "?"];
 
 
     var characterSelect = prompt("How many characters do you want your password to have (please select a number between 8 and 128)?")
@@ -16,21 +16,21 @@ var generateBtn = document.querySelector("#generate");
       alert("You did not enter a valid number, please try again.")
       return "Click on the red button to try again."
     } 
-  // character selection is either too small or too large
+// character selection is either too small or too large
 
     if (characterSelect < 8 || characterSelect > 128) {
       alert("You did not provide a valid length, please try again!")
       return "Click on the red button to try again."
    }
 
-  //character selection is in the acceptable range, progress
+//character selection is in the acceptable range, progress
 
     var selectLowercase = confirm("Do you want to include lowercase characters?")
     var selectUppercase = confirm("Do you want to include uppercase characters?")
     var selectNumeric = confirm("Do you want to include numeric?")
     var selectSpecial = confirm("Do you want to include special characters?")
 
-  //user choices will be entered here (storage container)
+//user selection and randomizes choice.  Pushes into empty container
 
     var recordKeeper = []
 
@@ -38,7 +38,6 @@ var generateBtn = document.querySelector("#generate");
       for (var i = 0; i < lowercase.length; i++) {
       var lowercaseRandom = lowercase[Math.floor(Math.random()*lowercase.length)];
       recordKeeper.push(lowercaseRandom);
-      console.log(recordKeeper)
       }
     }
 
@@ -46,7 +45,6 @@ var generateBtn = document.querySelector("#generate");
       for (var i = 0; i < uppercase.length; i++) {
       var uppercaseRandom = uppercase[Math.floor(Math.random()*uppercase.length)];
       recordKeeper.push(uppercaseRandom);
-      console.log(recordKeeper)
       }
     }
 
@@ -54,7 +52,6 @@ var generateBtn = document.querySelector("#generate");
       for (var i = 0; i < numeric.length; i++) {
       var numericRandom = numeric[Math.floor(Math.random()*numeric.length)];
       recordKeeper.push(numericRandom);
-      console.log(recordKeeper)
       }
     }
 
@@ -62,13 +59,16 @@ var generateBtn = document.querySelector("#generate");
       for (var i = 0; i < special.length; i++) {
       var specialRandom = special[Math.floor(Math.random()*special.length)];
       recordKeeper.push(specialRandom);
-      console.log(recordKeeper)
       }
     }
+
+//by default, numeric characters are placed in recordKeeper so there is no empty value
 
     if (recordKeeper.length === 0) {
       recordKeeper.push(numeric)
     }
+
+//displayed code is created from user choices and randomized one final time
 
     var createdCode = ""
 
@@ -86,7 +86,9 @@ var generateBtn = document.querySelector("#generate");
     special = confirm("Do you want to include special characters?");
   }
 
-  return createdCode
+//created code is returned to the user 
+
+    return createdCode
 }
 
 // Write password to the #password input
